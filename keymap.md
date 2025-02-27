@@ -8,3 +8,8 @@
 *   **Shift+F11**: 单步跳出（退出当前函数）
 *   **Ctrl+Shift+F5**: 重启调试会话
 *   **Shift+F5**: 停止调试
+
+
+macOS: Shift + Option + ↓（向下复制） 或 Shift + Option + ↑（向上复制）
+
+
