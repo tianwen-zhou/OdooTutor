@@ -77,6 +77,42 @@
         </field>
     </record>
 
+    <record id="view_estate_property_kanban" model="ir.ui.view">
+    <field name="name">estate.property.kanban</field>
+    <field name="model">estatead.property</field>
+    <field name="arch" type="xml">
+        <kanban default_group_by="property_type_id" disable_column_grouping="true">
+            <field name="property_type_id"/>
+            <field name="expected_price"/>
+            <field name="best_price"/>
+            <field name="selling_price"/>
+            <field name="property_tag_ids"/>
+            
+            <templates>
+                <t t-name="kanban-box">
+                    <div class="oe_kanban_global_click o_kanban_record">
+                        <strong><field name="name"/></strong>
+                        
+                        <div>Expected Price: <field name="expected_price" widget="monetary"/></div>
+                        
+                        <div t-if="record.best_price.raw_value">
+                            Best Price: <field name="best_price" widget="monetary"/>
+                        </div>
+                        
+                        <div t-if="record.selling_price.raw_value">
+                            Selling Price: <field name="selling_price" widget="monetary"/>
+                        </div>
+                        
+                        <div>
+                            <field name="property_tag_ids" widget="many2many_tags"/>
+                        </div>
+                    </div>
+                </t>
+            </templates>
+        </kanban>
+    </field>
+</record>
+
 
 </odoo>
 

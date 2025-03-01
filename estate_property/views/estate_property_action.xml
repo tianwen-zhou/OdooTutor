@@ -3,7 +3,7 @@
     <record id="estate_ad_property_action" model="ir.actions.act_window">
         <field name="name">Estate Properties</field>
         <field name="res_model">estatead.property</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">kanban,tree,form</field>
     </record>
 
     <record id="estate_ad_property_type_action" model="ir.actions.act_window">
