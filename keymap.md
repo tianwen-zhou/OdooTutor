@@ -12,5 +12,6 @@
 
 macOS: Shift + Option + ↓（向下复制） 或 Shift + Option + ↑（向上复制）
 
-
+创建新的module
 ./odoo-bin scaffold estate_account /path/to/your/odoo/addons
+
