@@ -1,8 +1,8 @@
-详解 Odoo pos 离线模式
+# 详解 Odoo pos 离线模式
 
 
 
-**Odoo POS 离线模式详解** Odoo **POS（Point of Sale）**  具有 **离线模式（Offline Mode）** ，允许 POS 终端在 **网络断开**  的情况下继续运行，并在恢复连接后自动同步数据。🚀 **离线模式的核心机制** ： 
+**Odoo POS 离线模式详解** Odoo **POS（Point of Sale）**  具有 **离线模式（Offline Mode）** ，允许 POS 终端在 **网络断开**  的情况下继续运行，并在恢复连接后自动同步数据。 **离线模式的核心机制** ： 
 1. **使用浏览器缓存和 IndexedDB**  存储销售数据、产品信息等。
  
 2. **Service Worker**  拦截请求，确保离线时 POS 界面可用。
