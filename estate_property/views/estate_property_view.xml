@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<odoo>
+
+        <record id="estate_property_list" model="ir.ui.view" >
+            <field name="name">estatead property lists</field>
+            <field name="model">estatead.property</field>
+            <field name="arch" type="xml">
+                <tree string="all list" default_order="name asc"
+                decoration-bf="state == 'offer_accepted'"
+                decoration-danger="state == 'canceled'"
+                decoration-success="state in ['offer_accepted', 'sold']"
+                >
+                    <field name="name" string="Name"/>
+                    <field name="property_type_id"/>
+                    <field name="property_tag_ids" widget="many2many_tags" options="{'color_field':'color', 'no_edit_color': false}"/>
+                    <field name="description"/>
+                    <field name="postcode"/>
+                    <field name="expected_price"/>
+                    <field name="bedrooms"/>
+                    <field name="living_area"/>
+                    <field name="date_availability" optional="hide"/>
+                    <field name="state"/>
+                    <field name="best_price"/>
+                    <field name="seller_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="estate_property_type_list" model="ir.ui.view">
+            <field name="name">estatead property type lists</field>
+            <field name="model">estatead.property.type</field>
+            <field name="arch" type="xml">
+                <tree string="all list">
+                    <field name="name" string="TypeName"/>
+                    <field name="sequence" widget="handle"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="estate_property_tag_list" model="ir.ui.view">
+            <field name="name">estatead property tag lists</field>
+            <field name="model">estatead.property.tag</field>
+            <field name="arch" type="xml">
+                <tree string="all list">
+                    <field name="name" string="TagName"/>
+                </tree>
+            </field>
+        </record>
+
+    <record id="estate_property_offer_view_tree" model="ir.ui.view">
+        <field name="name">estatead.property.offer.tree</field>
+        <field name="model">estatead.property.offer</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom" 
+                decoration-danger="state == 'refused'" 
+                decoration-success="state == 'accepted'">
+                <field name="price"/>
+                <field name="partner_id"/>
+                <field name="validity"/>
+                <field name="state" invisible="1"/>
+                <field name="property_type_id"/>
+                <!-- 其他字段 -->
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_users_form_inherit_estate" model="ir.ui.view">
+        <field name="name">res.users.form.inherit.estate</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_simple_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="inside">
+                <group string="Real Estate">
+                    <field name="property_ids" widget="one2many_list"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>
+

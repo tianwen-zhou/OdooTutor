@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        
+        <record id="crestate_property_form" model="ir.ui.view">
+            <field name="name">estatead.property.form</field>
+            <field name="model">estatead.property</field>
+            <field name="arch" type="xml">
+                <form string="Estate Property">
+                    <header>
+                        <button name="action_sold" type="object" string="Sold" 
+                        class="oe_highlight" 
+                        invisible="state in ['sold']"/>
+                         <!-- attrs="{'invisible': [('state', 'in', ['canceled', 'sold'])]}" 无效 -->
+                        <button name="action_cancel" type="object" string="Cancel" 
+                        class="btn-danger"
+                        invisible="state in ['canceled']"/>
+                       
+                        <field name="state" widget="statusbar" statusbar_visible="new,offer_received,offer_accepted,sold,canceled"/>
+                        <!-- <field name="state" widget=""></field> -->
+                        <!-- button 跳转到Odoo Action -->
+                        <!-- <button type="action" name="%(estate_ad_property_tag_action)d" string="My Action"/> -->
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="postcode"/>
+                                <field name="date_availability"/>
+                                <field name="property_type_id" widget="many2one" options="{'no_create': True, 'no_open': True}"/>
+                                <field name="property_tag_ids" widget="many2many_tags" options="{'color_field':'color', 'no_edit_color': false}"/>
+                            </group>
+                            <group>
+                                <field name="expected_price"/>
+                                <field name="selling_price"/>
+                                <field name="best_price"/>
+                                <field name="state"/>
+                                <field name="des_name"/>
+                            </group>
+                        </group>
+                            
+                        <notebook>
+                            <page string="Description">
+                                <div> Name:</div>  <field name="name"/>
+                                <div> Description:</div>  <field name="description"/>
+                                <div> Garden:</div>  <field name="garden"/>
+                                <div> Garden_orientation:</div>  <field name="garden_orientation"/>
+                                <div> Bedrooms:</div>  <field name="bedrooms"/>
+                                <div> Facades:</div>  <field name="facades"/>
+                                <div> Living_area:</div>  <field name="living_area"/>
+                                <div> Garden_area:</div>  <field name="garden_area"/>
+                                <div> Total_area:</div>  <field name="total_area"/>
+                            </page>
+                            <page string="Buying Information">
+                                <div> Seller:</div>  <field name="seller_id"/>
+                                <div> Buyer:</div>   <field name="buyer_id"></field>
+                            </page>
+                            <page string="Offers">
+                                <field name="property_offer_ids">
+                                    <tree editable="bottom" 
+                                        decoration-danger="state == 'refused'" 
+                                        decoration-success="state == 'accepted'">
+                                        <field name="partner_id"/>
+                                        <field name="price"/>
+                                        <field name="state"/>
+                                        <field name="property_type_id"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="estate_ad_property_type_action_view_form" model="ir.ui.view">
+            <field name="name">estatead.property.type.view.form</field>
+            <field name="model">estatead.property.type</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="%(estate_ad_property_offer_action)d"
+                                    type="action"
+                                    class="oe_stat_button"
+                                    icon="fa-money">
+                                <field name="offer_count" widget="statinfo" string="Offers"/>
+                            </button>
+                        </div>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <!-- 内联view，在类型中展示该类型下的所有房产 -->
+                        <!-- <group> -->
+                        <notebook>
+                        <page string="Properties">
+                            <field name="property_ids">
+                                <tree string="Properties">
+                                    <field name="name"></field>
+                                    <field name="expected_price"></field>
+                                    <field name="state"></field>
+                                </tree>
+                            </field>
+                        </page>
+                        </notebook>
+                        <!-- </group> -->
+                        
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="estate_ad_property_tag_view_form" model="ir.ui.view">
+            <field name="name">estatead.property.tag.view.form</field>
+            <field name="model">estatead.property.tag</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <field name="name"></field>
+                            <field name="color"></field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+</odoo>
+

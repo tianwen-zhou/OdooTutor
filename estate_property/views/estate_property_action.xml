@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="estate_ad_property_action" model="ir.actions.act_window">
+        <field name="name">Estate Properties</field>
+        <field name="res_model">estatead.property</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="estate_ad_property_type_action" model="ir.actions.act_window">
+        <field name="name">EstateAd Properties Type</field>
+        <field name="res_model">estatead.property.type</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="estate_ad_property_tag_action" model="ir.actions.act_window">
+        <field name="name">EstateAd Properties Tag</field>
+        <field name="res_model">estatead.property.tag</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="estate_ad_property_offer_action" model="ir.actions.act_window">
+        <field name="name">EstateAd Properties Offers</field>
+        <field name="res_model">estatead.property.offer</field>
+        <field name="view_mode">tree</field>
+        <field name="domain">[('property_type_id', '=', active_id)]</field>
+    </record>
+</odoo>
+
