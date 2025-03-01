@@ -13,3 +13,4 @@
 macOS: Shift + Option + ↓（向下复制） 或 Shift + Option + ↑（向上复制）
 
 
+./odoo-bin scaffold estate_account /path/to/your/odoo/addons
