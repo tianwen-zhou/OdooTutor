@@ -56,4 +56,13 @@ Edit
 ./gradlew clean
 重新构建和安装应用。
 
-
+ ```
+// 广播接收器注册时处理不同 Android 版本
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) { // Android 13
+            activity.registerReceiver(usbReceiver, filter, Context.RECEIVER_NOT_EXPORTED);
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) { // Android 12
+            activity.registerReceiver(usbReceiver, filter, Context.RECEIVER_NOT_EXPORTED);
+        } else {
+            activity.registerReceiver(usbReceiver, filter);
+        }
+```
