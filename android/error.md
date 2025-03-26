@@ -14,8 +14,9 @@ android {
         targetSdkVersion 30  // 降为 Android 11
     }
 }
+```
 
-为什么这样能解决问题?
+# 为什么这样能解决问题?
 在 Android 12 (API 31) 及以上版本，广播接收器必须指定 RECEIVER_EXPORTED 或 RECEIVER_NOT_EXPORTED 标志。
 
 ACLAS 秤 SDK 在内部使用了旧的注册方式：
@@ -26,14 +27,14 @@ Edit
 context.registerReceiver(receiver, filter)
 降低 targetSdkVersion 让应用在兼容模式下运行，无需这些新标志。
 
-其他可能解决方案
+# 其他可能解决方案
 使用反射修改 SDK 行为：技术上可行，但不推荐，容易引入新问题。
 
 自行实现 USB 通信层：不依赖 SDK 的广播接收器，但工作量大。
 
 联系 ACLAS 获取更新的 SDK：长期解决方案，如果 ACLAS 提供了兼容 Android 12+ 的新 SDK，最好使用官方更新。
 
-现有 ScaleManager 类
+# 现有 ScaleManager 类
 我之前提供的 ScaleManager.kt 已经实现了：
 ✅ 更好的线程安全性
 ✅ 异常处理
@@ -55,9 +56,4 @@ Edit
 ./gradlew clean
 重新构建和安装应用。
 
-完成这些步骤后，应用应该能够正常连接和使用 ACLAS 电子秤了。 🎯
 
-Copy
-Edit
-
-这个 Markdown 版本可以直接用于文档、GitHub README 或博客文章。你是否需要进一步优化？ 
