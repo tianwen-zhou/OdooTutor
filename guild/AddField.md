@@ -39,3 +39,13 @@ class PosPayment(models.Model):
     windcave_cashback_amount = fields.Float('Cashback Amount', digits='Product Price')
     windcave_receipt_data = fields.Text('Windcave Receipt Data')
 
+### 订单模型扩展
+# models/pos_order.py
+from odoo import api, fields, models
+
+class PosOrder(models.Model):
+    _inherit = 'pos.order'
+    
+    # 订单层面的必要字段
+    windcave_dps_txn_ref = fields.Char('Windcave Reference',
+                                     help="Stored for quick reference and reporting")
