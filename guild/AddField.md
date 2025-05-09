@@ -38,4 +38,4 @@ class PosPayment(models.Model):
     windcave_auth_code = fields.Char('Authorization Code')
     windcave_cashback_amount = fields.Float('Cashback Amount', digits='Product Price')
     windcave_receipt_data = fields.Text('Windcave Receipt Data')
-```python
+
