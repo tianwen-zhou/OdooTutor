@@ -130,7 +130,7 @@ Odoo Accounting
     ├── 会计科目自定义
     ├── 报表模板定制
     └── 工作流与审批自定义
-```java
+```
 
 # Odoo Accounting 知识结构与关键问题解答
 
